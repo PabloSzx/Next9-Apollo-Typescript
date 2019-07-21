@@ -1,5 +1,4 @@
 import { ApolloServer, gql } from "apollo-server-micro";
-import _ from "lodash";
 
 const typeDefs = gql`
   type Query {
@@ -14,7 +13,8 @@ const typeDefs = gql`
 const resolvers = {
   Query: {
     users(_parent, _args, _context) {
-      return [{ name: "Nextjs", id: _.random(20) }];
+      const id = Math.floor(Math.random() * 50);
+      return [{ name: "Nextjs", id }];
     },
   },
 };
